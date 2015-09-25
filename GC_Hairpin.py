@@ -1,6 +1,8 @@
 from Bio import Seq
 from Bio.Alphabet import IUPAC
 from Bio.SeqUtils import GC
+from Bio.Blast import NCBIWWW, NCBIXML
+# res_handle = NCBIWWW.qblast("blastn", "nt", sig_H)
 
 i = Seq.Seq("TTCCCGCTCAGCCTGTCATGGCTGAGCGATTTTTTTTTTACGT"
             ,IUPAC.unambiguous_dna)
@@ -45,7 +47,6 @@ print "TNTA alignments: ", re.search(sig_H[31:len(sig_H)+1], book_seq_neg10)
 print "~*--------------------------*~"
 ##Worksheet says 'this is a 'real' sequence'
 ##So I blast it
-# from Bio.Blast import NCBIWWW, NCBIXML
 # res_handle = NCBIWWW.qblast("blastn", "nt", sig_H)
 # result = res_handle.read()
 # save_f = open('result.xml', 'wr')
@@ -68,7 +69,7 @@ orf_2 = map(org_seq_2.find, STOPS)
 # print orf_0, orf_1, orf_2
 # print len(org_seq_0)
 
-##Refactored code from above for my sanity
+##Longest ORF Refactored
 seq_x = [org_seq_0, org_seq_1, org_seq_2]
 stops_in_seq_x = []
 for seqx in seq_x:
